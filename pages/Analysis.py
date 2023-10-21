@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 
 st.set_page_config('Analysis')
-df = pd.read_csv('datasets/dataviz1.csv')
+df = pd.read_csv('data/dataviz1.csv')
 group_df = df.groupby('sector').mean(numeric_only=True)[['price','avg._price','build_up_area','latitude','longitude']] 
 st.header('Avg. Price of Flats')
 fig = px.scatter_mapbox(group_df,zoom=10,lat='latitude',lon='longitude',color='avg._price',size='build_up_area',color_continuous_scale='Viridis',mapbox_style="open-street-map",width=1200,height=700,hover_name=group_df.index)
